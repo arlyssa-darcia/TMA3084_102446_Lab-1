@@ -13,4 +13,20 @@ void main() {
     int quantity = int.parse(quantityInput!);
 
     print('You ordered $quantity $size pizza(s).');
+
+    int pricePerPizza = 0;
+
+    if (size == 'small') {
+        pricePerPizza = 5;
+    } else if (size == 'medium') {
+        pricePerPizza = 7;
+    } else if (size == 'large') {
+        pricePerPizza = 10;
+    } else {
+        print('Invalid pizza size.');
+        return;
+    }
+
+    int total = pricePerPizza * quantity;
+    print('Total payment: $total USD');
 }
