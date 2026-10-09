@@ -1,39 +1,46 @@
-// Allow keyboard input (stdin)
+// TMA3084 Lab 1: Pizza Order Calculator
+// Uses switch-case and while loop
+
 import 'dart:io';
 
 void main() {
-    // Show pizza menu and prices
-    print('=== Pizza Order ===');
-    print('Pizza Price: Small: 5 USD, Medium: 7 USD, Large: 10 USD');
+  print('============');
+  print('Pizza Price: "Small: 5 USD, Medium: 7 USD, Large: 10 USD"');
 
-    // Ask for pizza size
-    print('Please enter your pizza size (small, medium, or large)');
-    String? size = stdin.readLineSync();
-    size = size?.toLowerCase();
+  String? size;
+  // while loop: keep asking until size is valid
+  while (true) {
+    print('Please enter your pizza size (small, medium, or large):');
+    size = stdin.readLineSync();
+    size = size?.toLowerCase().trim();
 
-    // Ask for pizza quantity
-    print('How many pizzas do you want of $size?');
-    String? quantityInput = stdin.readLineSync();
-    int quantity = int.parse(quantityInput!);
-
-    print('You ordered $quantity $size pizza(s).');
-
-    // Set pizza price based on their size
-    int pricePerPizza = 0;
-
-    if (size == 'small') {
-        pricePerPizza = 5;
-    } else if (size == 'medium') {
-        pricePerPizza = 7;
-    } else if (size == 'large') {
-        pricePerPizza = 10;
-    } else {
-        // Stop if the size is not valid
-        print('Invalid pizza size.');
-        return;
+    if (size == 'small' || size == 'medium' || size == 'large') {
+      break;
     }
+    print('Invalid size. Please try again.');
+  }
 
-    // Calculate and show total payment
-    int total = pricePerPizza * quantity;
-    print('Total payment: $total USD');
+  print('How many pizzas do you want of $size?');
+  int quantity = int.parse(stdin.readLineSync()!);
+
+  int pricePerPizza = 0;
+
+  // switch-case: set price based on size
+  switch (size) {
+    case 'small':
+      pricePerPizza = 5;
+      break;
+    case 'medium':
+      pricePerPizza = 7;
+      break;
+    case 'large':
+      pricePerPizza = 10;
+      break;
+    default:
+      print('Invalid pizza size.');
+      return;
+  }
+
+  int total = pricePerPizza * quantity;
+  print('Your Total Payment is: \$$total');
 }
