@@ -1,5 +1,6 @@
 // TMA3084 Lab 1: Pizza Order Calculator
-// Uses switch-case and while loop
+// Name: Arlyssa Darcia Anak Dickson
+// Matric: 102446
 
 import 'dart:io';
 
